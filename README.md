@@ -8,6 +8,10 @@ Bachelor of Science thesis project from
 
 - This project was bootstrapped with
   [Create React App](https://github.com/facebook/create-react-app).
+- Programming language: JavaScript
+- Frontend library: React
+- TailwindCSS for styling
+- Nivo for charts and graphs
 
 ## Available Scripts
 
