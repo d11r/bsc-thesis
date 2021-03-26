@@ -1,5 +1,7 @@
+import MetricsView from './components/MetricsView'
+
 function App() {
-  return <div>Dragos Strugar BSc Thesis Project</div>
+  return <MetricsView />
 }
 
 export default App
