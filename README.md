@@ -11,7 +11,7 @@ Bachelor of Science thesis project from
 - Programming language: JavaScript
 - Frontend library: React
 - TailwindCSS for styling
-- Nivo for charts and graphs
+- Recharts for charts and graphs
 
 ## Available Scripts
 
