@@ -9,6 +9,10 @@ export default function MetricsView() {
       <Card>
         <Metric kpi={metrics.newAccountsPerMonth}></Metric>
       </Card>
+
+      <Card className="mt-4">
+        <Metric kpi={metrics.avgCostToAcquireCustomer}></Metric>
+      </Card>
     </div>
   )
 }

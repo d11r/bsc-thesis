@@ -7,11 +7,13 @@ import {
   Tooltip,
   Legend,
   ResponsiveContainer,
+  AreaChart,
+  Area,
 } from 'recharts'
 
 import ReactStars from 'react-rating-stars-component'
 
-import {newAccountsPerMonth} from '../config'
+import {newAccountsPerMonth, avgCostToAcquireCustomer} from '../config'
 import {metrics} from '../constants'
 
 function RatingFeedback() {
@@ -38,6 +40,9 @@ export default function Metric({kpi}) {
     case metrics.newAccountsPerMonth:
       return (
         <div className="w-full h-80 flex flex-col">
+          <span className="text-gray-800 text-xl ml-10">
+            New Users per Month
+          </span>
           <ResponsiveContainer>
             <BarChart
               data={newAccountsPerMonth.data}
@@ -59,6 +64,36 @@ export default function Metric({kpi}) {
                 name={newAccountsPerMonth.opts.yLabel}
               />
             </BarChart>
+          </ResponsiveContainer>
+          <RatingFeedback />
+        </div>
+      )
+
+    case metrics.avgCostToAcquireCustomer:
+      return (
+        <div className="w-full h-80 flex flex-col">
+          <span className="text-gray-800 text-xl ml-10">
+            Average Monthly Cost to Acquire Customer
+          </span>
+          <ResponsiveContainer width="100%" height="100%">
+            <AreaChart
+              width={500}
+              height={400}
+              data={avgCostToAcquireCustomer.data}
+              margin={{
+                top: 10,
+                right: 30,
+                left: 0,
+                bottom: 0,
+              }}
+            >
+              <CartesianGrid strokeDasharray="3 3" />
+              <XAxis dataKey="month" />
+              <YAxis />
+              <Tooltip formatter={(value, name, props) => `$${value}.0`} />
+              <Legend />
+              <Area {...avgCostToAcquireCustomer.opts} />
+            </AreaChart>
           </ResponsiveContainer>
           <RatingFeedback />
         </div>
