@@ -37,7 +37,7 @@ export default function Metric({kpi}) {
   switch (kpi) {
     case metrics.newAccountsPerMonth:
       return (
-        <div className="w-full">
+        <div className="w-full h-80 flex flex-col">
           <ResponsiveContainer>
             <BarChart
               data={newAccountsPerMonth.data}
