@@ -13,8 +13,8 @@ export default function MetricsView() {
           </h3>
         </div>
 
-        <div className="h-full w-full px-10 grid grid-cols-2 sm:grid-cols-3 xl:grid-cols-4">
-          <Card className="m-2">
+        <div className="h-full w-full px-10 grid grid-cols-2 sm:grid-cols-3 xl:grid-cols-4 gap-2">
+          <Card className="m-2 col-span-2">
             <Metric kpi={metrics.newAccountsPerMonth}></Metric>
           </Card>
 
