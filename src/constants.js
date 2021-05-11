@@ -3,4 +3,5 @@ export const metrics = {
   avgCostToAcquireCustomer: 'avg-cost-to-acquire-customer',
   customerLTV: 'customer-ltv',
   churnRate: 'churn-rate',
+  newNewRevenue: 'new-net-revenue',
 }

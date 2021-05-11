@@ -18,8 +18,11 @@ import {
   avgCostToAcquireCustomer,
   customerLTV,
   churnRate,
+  newNewRevenue,
 } from '../config'
 import {metrics} from '../constants'
+
+const usdFormatter = {style: 'currency', currency: 'USD'}
 
 function RatingFeedback() {
   return (
@@ -162,6 +165,29 @@ export default function Metric({kpi}) {
               <Area {...avgCostToAcquireCustomer.opts} name="Churn Rate" />
             </AreaChart>
           </ResponsiveContainer>
+          <RatingFeedback />
+        </div>
+      )
+
+    case metrics.newNewRevenue:
+      return (
+        <div className="w-full h-full flex flex-col">
+          <div className="h-60">
+            <div className="text-gray-800 text-xl ml-10 w-full">
+              {newNewRevenue.data[0].name}
+            </div>
+            <div className="mt-8 text-blue-400 text-5xl font-bold ml-10">
+              {new Intl.NumberFormat('en-US', usdFormatter).format(
+                newNewRevenue.data[0].number,
+              )}
+            </div>
+            <div className="mr-10 mt-4 p-1 bg-gray-100 ml-10 flex items-center text-gray-500">
+              Target:{' '}
+              <span className="ml-4 text-green-400 text-4xl font-bold">
+                ${newNewRevenue.data[0].target}
+              </span>
+            </div>
+          </div>
           <RatingFeedback />
         </div>
       )

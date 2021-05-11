@@ -272,3 +272,13 @@ export const churnRate = {
     },
   ],
 }
+
+export const newNewRevenue = {
+  data: [
+    {
+      number: 30000,
+      target: 35000,
+      name: 'Net New Revenue this month',
+    },
+  ],
+}
