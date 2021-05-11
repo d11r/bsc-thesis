@@ -17,6 +17,7 @@ import {
   newAccountsPerMonth,
   avgCostToAcquireCustomer,
   customerLTV,
+  churnRate,
 } from '../config'
 import {metrics} from '../constants'
 
@@ -130,6 +131,36 @@ export default function Metric({kpi}) {
                 name={newAccountsPerMonth.opts.yLabel}
               />
             </BarChart>
+          </ResponsiveContainer>
+          <RatingFeedback />
+        </div>
+      )
+
+    case metrics.churnRate:
+      return (
+        <div className="w-full h-full flex flex-col">
+          <span className="text-gray-800 text-xl ml-10">
+            Monthly Churn Rate
+          </span>
+          <ResponsiveContainer width="100%" height="100%">
+            <AreaChart
+              width={500}
+              height={400}
+              data={churnRate.data}
+              margin={{
+                top: 10,
+                right: 30,
+                left: 0,
+                bottom: 0,
+              }}
+            >
+              <CartesianGrid strokeDasharray="3 3" />
+              <XAxis dataKey="month" />
+              <YAxis />
+              <Tooltip formatter={(value, name, props) => `${value}%`} />
+              <Legend />
+              <Area {...avgCostToAcquireCustomer.opts} name="Churn Rate" />
+            </AreaChart>
           </ResponsiveContainer>
           <RatingFeedback />
         </div>

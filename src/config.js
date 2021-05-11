@@ -207,3 +207,68 @@ export const customerLTV = {
     },
   ],
 }
+
+export const churnRate = {
+  data: [
+    {
+      month: 'January',
+      number: 6,
+    },
+    {
+      month: 'February',
+      number: 5.99,
+    },
+    {
+      month: 'March',
+      number: 5.7,
+    },
+    {
+      month: 'April',
+      number: 5.75,
+    },
+    {
+      month: 'March',
+      number: 5.43,
+    },
+    {
+      month: 'June',
+      number: 5.41,
+    },
+    {
+      month: 'July',
+      number: 5.33,
+    },
+    {
+      month: 'August',
+      number: 5.22,
+    },
+    {
+      month: 'September',
+      number: 4.3,
+    },
+    {
+      month: 'October',
+      number: 3.8,
+    },
+    {
+      month: 'November',
+      number: 3.9,
+    },
+    {
+      month: 'December',
+      number: 4.3,
+    },
+    {
+      month: 'January',
+      number: 4.1,
+    },
+    {
+      month: 'February',
+      number: 3.6,
+    },
+    {
+      month: 'March',
+      number: 3.3,
+    },
+  ],
+}
