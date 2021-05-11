@@ -13,16 +13,20 @@ import {
 
 import ReactStars from 'react-rating-stars-component'
 
-import {newAccountsPerMonth, avgCostToAcquireCustomer} from '../config'
+import {
+  newAccountsPerMonth,
+  avgCostToAcquireCustomer,
+  customerLTV,
+} from '../config'
 import {metrics} from '../constants'
 
 function RatingFeedback() {
   return (
     <div className="w-full px-6 flex justify-around items-center">
-      <span className="text-gray-500">How useful is this metric to you?</span>
+      <span className="text-gray-500 text-sm">Rate the relevance</span>
       <ReactStars
         count={5}
-        size={24}
+        size={18}
         activeColor="#ffd700"
         onChange={(newRating) => {
           console.log(newRating)
@@ -39,7 +43,7 @@ export default function Metric({kpi}) {
   switch (kpi) {
     case metrics.newAccountsPerMonth:
       return (
-        <div className="w-full h-80 flex flex-col">
+        <div className="w-full h-full flex flex-col">
           <span className="text-gray-800 text-xl ml-10">
             New Users per Month
           </span>
@@ -71,7 +75,7 @@ export default function Metric({kpi}) {
 
     case metrics.avgCostToAcquireCustomer:
       return (
-        <div className="w-full h-80 flex flex-col">
+        <div className="w-full h-full flex flex-col">
           <span className="text-gray-800 text-xl ml-10">
             Average Monthly Cost to Acquire Customer
           </span>
@@ -94,6 +98,38 @@ export default function Metric({kpi}) {
               <Legend />
               <Area {...avgCostToAcquireCustomer.opts} />
             </AreaChart>
+          </ResponsiveContainer>
+          <RatingFeedback />
+        </div>
+      )
+
+    case metrics.customerLTV:
+      return (
+        <div className="w-full h-full flex flex-col">
+          <span className="text-gray-800 text-xl ml-10">
+            Lifetime Value of Customers
+          </span>
+          <ResponsiveContainer>
+            <BarChart
+              data={customerLTV.data}
+              margin={{
+                top: 10,
+                right: 30,
+                left: 0,
+                bottom: 20,
+              }}
+            >
+              <CartesianGrid strokeDasharray="3 3" />
+              <XAxis dataKey={newAccountsPerMonth.opts.xKey} />
+              <YAxis />
+              <Tooltip />
+              <Legend />
+              <Bar
+                dataKey="number"
+                fill={newAccountsPerMonth.opts.fillColor}
+                name={newAccountsPerMonth.opts.yLabel}
+              />
+            </BarChart>
           </ResponsiveContainer>
           <RatingFeedback />
         </div>

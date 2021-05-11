@@ -142,3 +142,68 @@ export const avgCostToAcquireCustomer = {
     name: 'Avg. Monthly CAC',
   },
 }
+
+export const customerLTV = {
+  data: [
+    {
+      month: 'January',
+      number: 750,
+    },
+    {
+      month: 'February',
+      number: 760,
+    },
+    {
+      month: 'March',
+      number: 792,
+    },
+    {
+      month: 'April',
+      number: 780,
+    },
+    {
+      month: 'March',
+      number: 801,
+    },
+    {
+      month: 'June',
+      number: 703,
+    },
+    {
+      month: 'July',
+      number: 840,
+    },
+    {
+      month: 'August',
+      number: 890,
+    },
+    {
+      month: 'September',
+      number: 860,
+    },
+    {
+      month: 'October',
+      number: 870,
+    },
+    {
+      month: 'November',
+      number: 850,
+    },
+    {
+      month: 'December',
+      number: 840,
+    },
+    {
+      month: 'January',
+      number: 870,
+    },
+    {
+      month: 'February',
+      number: 854,
+    },
+    {
+      month: 'March',
+      number: 880,
+    },
+  ],
+}
