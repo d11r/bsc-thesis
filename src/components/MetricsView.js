@@ -11,6 +11,12 @@ export default function MetricsView() {
           <h3 className="text-2xl text-gray-800">
             Adaptable Performance Dashboard Demo
           </h3>
+
+          <p className="text-sm text-gray-600">BSc Thesis</p>
+          <p className="text-sm text-gray-600">Student: Dragos Strugar</p>
+          <p className="text-sm text-gray-600">
+            Supervisor: Prof. Giancarlo Succi
+          </p>
         </div>
 
         <div className="h-full w-full px-10 grid grid-cols-2 sm:grid-cols-3 xl:grid-cols-4 gap-2">
