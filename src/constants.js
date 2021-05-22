@@ -4,4 +4,6 @@ export const metrics = {
   customerLTV: 'customer-ltv',
   churnRate: 'churn-rate',
   newNewRevenue: 'new-net-revenue',
+  currentMonthly: 'current-monthly-revenue',
+  avgRevenuePerCustomer: 'avg-revenue-per-customer',
 }

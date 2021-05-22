@@ -282,3 +282,23 @@ export const newNewRevenue = {
     },
   ],
 }
+
+export const currentMonthylRevenue = {
+  data: [
+    {
+      number: 135000,
+      target: 175000,
+      name: 'Current Monthly Revenue',
+    },
+  ],
+}
+
+export const avgRevPerCustomer = {
+  data: [
+    {
+      number: 870,
+      target: 1050,
+      name: 'Avg. Revenue per Customer',
+    },
+  ],
+}
