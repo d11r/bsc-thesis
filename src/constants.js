@@ -6,4 +6,5 @@ export const metrics = {
   newNewRevenue: 'new-net-revenue',
   currentMonthly: 'current-monthly-revenue',
   avgRevenuePerCustomer: 'avg-revenue-per-customer',
+  conversionPercentage: 'conversion-percentage',
 }

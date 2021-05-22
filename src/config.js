@@ -302,3 +302,68 @@ export const avgRevPerCustomer = {
     },
   ],
 }
+
+export const trialConversion = {
+  data: [
+    {
+      month: 'January',
+      number: 6,
+    },
+    {
+      month: 'February',
+      number: 8,
+    },
+    {
+      month: 'March',
+      number: 9,
+    },
+    {
+      month: 'April',
+      number: 11,
+    },
+    {
+      month: 'March',
+      number: 10,
+    },
+    {
+      month: 'June',
+      number: 17,
+    },
+    {
+      month: 'July',
+      number: 14,
+    },
+    {
+      month: 'August',
+      number: 13,
+    },
+    {
+      month: 'September',
+      number: 9,
+    },
+    {
+      month: 'October',
+      number: 7,
+    },
+    {
+      month: 'November',
+      number: 8,
+    },
+    {
+      month: 'December',
+      number: 9,
+    },
+    {
+      month: 'January',
+      number: 11,
+    },
+    {
+      month: 'February',
+      number: 13,
+    },
+    {
+      month: 'March',
+      number: 15,
+    },
+  ],
+}

@@ -21,6 +21,7 @@ import {
   newNewRevenue,
   currentMonthylRevenue,
   avgRevPerCustomer,
+  trialConversion,
 } from '../config'
 import {metrics} from '../constants'
 
@@ -242,6 +243,39 @@ export default function Metric({kpi}) {
               </span>
             </div>
           </div>
+          <RatingFeedback />
+        </div>
+      )
+
+    case metrics.conversionPercentage:
+      return (
+        <div className="w-full h-full flex flex-col">
+          <span className="text-gray-800 text-xl ml-10">
+            Monthly Trial to Customer %
+          </span>
+          <ResponsiveContainer width="100%" height="100%">
+            <AreaChart
+              width={500}
+              height={400}
+              data={trialConversion.data}
+              margin={{
+                top: 10,
+                right: 30,
+                left: 0,
+                bottom: 0,
+              }}
+            >
+              <CartesianGrid strokeDasharray="3 3" />
+              <XAxis dataKey="month" />
+              <YAxis />
+              <Tooltip formatter={(value, name, props) => `$${value}.0`} />
+              <Legend />
+              <Area
+                {...avgCostToAcquireCustomer.opts}
+                name="Trial Percentage"
+              />
+            </AreaChart>
+          </ResponsiveContainer>
           <RatingFeedback />
         </div>
       )

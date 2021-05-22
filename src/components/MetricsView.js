@@ -47,6 +47,10 @@ export default function MetricsView() {
           <Card className="m-2">
             <Metric kpi={metrics.avgRevenuePerCustomer}></Metric>
           </Card>
+
+          <Card className="m-2">
+            <Metric kpi={metrics.conversionPercentage}></Metric>
+          </Card>
         </div>
       </div>
     </div>
