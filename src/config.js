@@ -367,3 +367,23 @@ export const trialConversion = {
     },
   ],
 }
+
+export const funnelConversion = {
+  data: [
+    {
+      value: 100,
+      name: 'Page Visitors',
+      fill: '#8884d8',
+    },
+    {
+      value: 45,
+      name: 'Trial Started',
+      fill: '#83a6ed',
+    },
+    {
+      value: 37,
+      name: 'Subscribed After Trial',
+      fill: '#82ca9d',
+    },
+  ],
+}

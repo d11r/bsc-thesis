@@ -9,6 +9,9 @@ import {
   ResponsiveContainer,
   AreaChart,
   Area,
+  FunnelChart,
+  Funnel,
+  LabelList,
 } from 'recharts'
 
 import ReactStars from 'react-rating-stars-component'
@@ -22,6 +25,7 @@ import {
   currentMonthylRevenue,
   avgRevPerCustomer,
   trialConversion,
+  funnelConversion,
 } from '../config'
 import {metrics} from '../constants'
 
@@ -275,6 +279,31 @@ export default function Metric({kpi}) {
                 name="Trial Percentage"
               />
             </AreaChart>
+          </ResponsiveContainer>
+          <RatingFeedback />
+        </div>
+      )
+
+    case metrics.conversionFunnel:
+      return (
+        <div className="w-full h-full flex flex-col">
+          <span className="text-gray-800 text-xl ml-10">Conversion Funnel</span>
+          <ResponsiveContainer width="100%" height="100%">
+            <FunnelChart width={730} height={250}>
+              <Tooltip />
+              <Funnel
+                dataKey="value"
+                data={funnelConversion.data}
+                isAnimationActive
+              >
+                <LabelList
+                  position="right"
+                  fill="#000"
+                  stroke="none"
+                  dataKey="name"
+                />
+              </Funnel>
+            </FunnelChart>
           </ResponsiveContainer>
           <RatingFeedback />
         </div>

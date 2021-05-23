@@ -7,4 +7,5 @@ export const metrics = {
   currentMonthly: 'current-monthly-revenue',
   avgRevenuePerCustomer: 'avg-revenue-per-customer',
   conversionPercentage: 'conversion-percentage',
+  conversionFunnel: 'conversion-funnel',
 }
