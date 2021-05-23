@@ -26,6 +26,7 @@ import {
   avgRevPerCustomer,
   trialConversion,
   funnelConversion,
+  iterationBurndown,
 } from '../config'
 import {metrics} from '../constants'
 
@@ -304,6 +305,38 @@ export default function Metric({kpi}) {
                 />
               </Funnel>
             </FunnelChart>
+          </ResponsiveContainer>
+          <RatingFeedback />
+        </div>
+      )
+
+    case metrics.iterationBurndown:
+      return (
+        <div className="w-full h-full flex flex-col">
+          <span className="text-gray-800 text-xl ml-10">
+            Iteration Burndown (2-Week)
+          </span>
+          <ResponsiveContainer>
+            <BarChart
+              data={iterationBurndown.data}
+              margin={{
+                top: 10,
+                right: 30,
+                left: 0,
+                bottom: 20,
+              }}
+            >
+              <CartesianGrid strokeDasharray="3 3" />
+              <XAxis dataKey="day" />
+              <YAxis />
+              <Tooltip />
+              <Legend />
+              <Bar
+                dataKey="number"
+                fill={newAccountsPerMonth.opts.fillColor}
+                name="Story Points Left"
+              />
+            </BarChart>
           </ResponsiveContainer>
           <RatingFeedback />
         </div>

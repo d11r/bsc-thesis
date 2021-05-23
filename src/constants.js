@@ -8,4 +8,5 @@ export const metrics = {
   avgRevenuePerCustomer: 'avg-revenue-per-customer',
   conversionPercentage: 'conversion-percentage',
   conversionFunnel: 'conversion-funnel',
+  iterationBurndown: 'iteration-burndown',
 }

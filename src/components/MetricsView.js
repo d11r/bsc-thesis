@@ -48,6 +48,10 @@ export default function MetricsView() {
             <Metric kpi={metrics.avgRevenuePerCustomer}></Metric>
           </Card>
 
+          <Card className="m-2 col-span-2">
+            <Metric kpi={metrics.iterationBurndown}></Metric>
+          </Card>
+
           <Card className="m-2">
             <Metric kpi={metrics.conversionPercentage}></Metric>
           </Card>

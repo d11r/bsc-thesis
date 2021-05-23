@@ -387,3 +387,48 @@ export const funnelConversion = {
     },
   ],
 }
+
+export const iterationBurndown = {
+  data: [
+    {
+      day: 'Monday',
+      number: 73,
+    },
+    {
+      day: 'Tuesday',
+      number: 67,
+    },
+    {
+      day: 'Wednesday',
+      number: 60,
+    },
+    {
+      day: 'Thursday',
+      number: 52,
+    },
+    {
+      day: 'Friday',
+      number: 47,
+    },
+    {
+      day: 'Monday',
+      number: 49,
+    },
+    {
+      day: 'Tuesday',
+      number: 43,
+    },
+    {
+      day: 'Wednesday',
+      number: 37,
+    },
+    {
+      day: 'Thursday',
+      number: 31,
+    },
+    {
+      day: 'Friday',
+      number: 21,
+    },
+  ],
+}
