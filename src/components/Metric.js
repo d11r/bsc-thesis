@@ -289,8 +289,8 @@ export default function Metric({kpi}) {
         <div className="w-full h-full flex flex-col">
           <span className="text-gray-800 text-xl ml-10">Conversion Funnel</span>
           <ResponsiveContainer width="100%" height="100%">
-            <FunnelChart width={730} height={250}>
-              <Tooltip />
+            <FunnelChart width={500} height={250}>
+              <Tooltip formatter={(value, name, props) => `${value}%`} />
               <Funnel
                 dataKey="value"
                 data={funnelConversion.data}
