@@ -4,6 +4,21 @@ import Card from './Card'
 import {metrics} from '../constants'
 
 export default function MetricsView() {
+  const allMetrics = [
+    metrics.newAccountsPerMonth,
+    metrics.avgCostToAcquireCustomer,
+    metrics.customerLTV,
+    metrics.churnRate,
+    metrics.newNewRevenue,
+    metrics.currentMonthly,
+    metrics.avgRevenuePerCustomer,
+    metrics.iterationBurndown,
+    metrics.conversionPercentage,
+    metrics.conversionFunnel,
+    metrics.userTarget,
+    metrics.roiPerCustomer,
+  ]
+
   return (
     <div className="h-screen w-screen bg-green-50">
       <div>
@@ -20,45 +35,11 @@ export default function MetricsView() {
         </div>
 
         <div className="h-full w-full px-10 grid grid-cols-2 sm:grid-cols-3 xl:grid-cols-4 gap-2">
-          <Card className="m-2 col-span-2">
-            <Metric kpi={metrics.newAccountsPerMonth}></Metric>
-          </Card>
-
-          <Card className="m-2">
-            <Metric kpi={metrics.avgCostToAcquireCustomer}></Metric>
-          </Card>
-
-          <Card className="m-2">
-            <Metric kpi={metrics.customerLTV}></Metric>
-          </Card>
-
-          <Card className="m-2">
-            <Metric kpi={metrics.churnRate}></Metric>
-          </Card>
-
-          <Card className="m-2">
-            <Metric kpi={metrics.newNewRevenue}></Metric>
-          </Card>
-
-          <Card className="m-2">
-            <Metric kpi={metrics.currentMonthly}></Metric>
-          </Card>
-
-          <Card className="m-2">
-            <Metric kpi={metrics.avgRevenuePerCustomer}></Metric>
-          </Card>
-
-          <Card className="m-2 col-span-2">
-            <Metric kpi={metrics.iterationBurndown}></Metric>
-          </Card>
-
-          <Card className="m-2">
-            <Metric kpi={metrics.conversionPercentage}></Metric>
-          </Card>
-
-          <Card className="m-2">
-            <Metric kpi={metrics.conversionFunnel}></Metric>
-          </Card>
+          {allMetrics.slice(0, 5).map((metric, idx) => (
+            <Card className={`m-2 ${idx === 0 && 'col-span-2'}`}>
+              <Metric kpi={metric}></Metric>
+            </Card>
+          ))}
         </div>
       </div>
     </div>

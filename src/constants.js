@@ -9,4 +9,6 @@ export const metrics = {
   conversionPercentage: 'conversion-percentage',
   conversionFunnel: 'conversion-funnel',
   iterationBurndown: 'iteration-burndown',
+  userTarget: 'user-target',
+  roiPerCustomer: 'roi-per-customer',
 }

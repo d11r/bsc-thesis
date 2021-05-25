@@ -27,6 +27,8 @@ import {
   trialConversion,
   funnelConversion,
   iterationBurndown,
+  userTarget,
+  roiPerCustomer,
 } from '../config'
 import {metrics} from '../constants'
 
@@ -338,6 +340,52 @@ export default function Metric({kpi}) {
               />
             </BarChart>
           </ResponsiveContainer>
+          <RatingFeedback />
+        </div>
+      )
+
+    case metrics.userTarget:
+      return (
+        <div className="w-full h-full flex flex-col">
+          <div className="h-60">
+            <div className="text-gray-800 text-xl ml-10 w-full">
+              {userTarget.data[0].name}
+            </div>
+            <div className="mt-8 text-blue-400 text-4xl font-bold ml-10">
+              Current: {userTarget.data[0].number}
+            </div>
+            <div className="mr-10 mt-4 p-1 bg-gray-100 ml-10 flex items-center text-gray-500">
+              Target:{' '}
+              <span className="ml-4 text-green-400 text-3xl font-bold">
+                {userTarget.data[0].target}
+              </span>
+            </div>
+          </div>
+          <RatingFeedback />
+        </div>
+      )
+
+    case metrics.roiPerCustomer:
+      return (
+        <div className="w-full h-full flex flex-col">
+          <div className="h-60">
+            <div className="text-gray-800 text-xl ml-10 w-full">
+              {roiPerCustomer.data[0].name}
+            </div>
+            <div className="mt-8 text-blue-400 text-4xl font-bold ml-10">
+              {new Intl.NumberFormat('en-US', usdFormatter).format(
+                roiPerCustomer.data[0].number,
+              )}
+            </div>
+            <div className="mr-10 mt-4 p-1 bg-gray-100 ml-10 flex items-center text-gray-500">
+              Target:{' '}
+              <span className="ml-4 text-green-400 text-3xl font-bold">
+                {new Intl.NumberFormat('en-US', usdFormatter).format(
+                  roiPerCustomer.data[0].target,
+                )}
+              </span>
+            </div>
+          </div>
           <RatingFeedback />
         </div>
       )

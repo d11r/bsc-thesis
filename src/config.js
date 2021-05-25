@@ -432,3 +432,23 @@ export const iterationBurndown = {
     },
   ],
 }
+
+export const userTarget = {
+  data: [
+    {
+      number: 720,
+      target: 1000,
+      name: 'Overall User # Target',
+    },
+  ],
+}
+
+export const roiPerCustomer = {
+  data: [
+    {
+      number: 26,
+      target: 20,
+      name: 'ROI per Customer',
+    },
+  ],
+}
