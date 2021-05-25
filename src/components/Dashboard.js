@@ -1,7 +1,20 @@
+import React from 'react'
 import Metric from './Metric'
 import Card from './Card'
 
 import {metrics} from '../constants'
+
+function useLocalStorage(key, defaultValue = []) {
+  const [state, setState] = React.useState(
+    () => JSON.parse(window.localStorage.getItem(key)) || defaultValue,
+  )
+
+  React.useEffect(() => {
+    window.localStorage.setItem(key, JSON.stringify(state))
+  }, [key, state])
+
+  return [state, setState]
+}
 
 export default function Dashboard() {
   const allMetrics = [
@@ -19,6 +32,10 @@ export default function Dashboard() {
     metrics.roiPerCustomer,
   ]
 
+  const [ratings, setRatings] = useLocalStorage('bsc-ratings', [])
+  const addRating = (r) => setRatings(ratings.concat(r))
+
+  console.log(ratings)
   return (
     <div className="h-screen w-screen bg-green-50">
       <div>
@@ -36,8 +53,8 @@ export default function Dashboard() {
 
         <div className="h-full w-full px-10 grid grid-cols-2 sm:grid-cols-3 xl:grid-cols-4 gap-1">
           {allMetrics.slice(0, 5).map((metric, idx) => (
-            <Card className={`m-2 ${idx === 0 && 'col-span-2'}`}>
-              <Metric kpi={metric} showRating={true} />
+            <Card key={metric} className={`m-2 ${idx === 0 && 'col-span-2'}`}>
+              <Metric kpi={metric} showRating={true} addRating={addRating} />
             </Card>
           ))}
         </div>

@@ -34,7 +34,7 @@ import {metrics} from '../constants'
 
 const usdFormatter = {style: 'currency', currency: 'USD'}
 
-function RatingFeedback() {
+function RatingFeedback({addRating, kpi}) {
   return (
     <div className="w-full px-6 flex justify-around items-center">
       <span className="text-gray-500 text-sm">Rate the relevance</span>
@@ -47,13 +47,15 @@ function RatingFeedback() {
           //TODO: make the rating disappear
           //TODO: make some sort of feedback to the user to indicate successful rating vote
           //TODO: save the rating in the system for future recommendations
+
+          addRating({[kpi]: newRating})
         }}
       />
     </div>
   )
 }
 
-export default function Metric({kpi, showRating = false}) {
+export default function Metric({kpi, addRating, showRating = false}) {
   switch (kpi) {
     case metrics.newAccountsPerMonth:
       return (
@@ -83,7 +85,7 @@ export default function Metric({kpi, showRating = false}) {
               />
             </BarChart>
           </ResponsiveContainer>
-          {showRating && <RatingFeedback />}
+          {showRating && <RatingFeedback kpi={kpi} addRating={addRating} />}
         </div>
       )
 
@@ -113,7 +115,7 @@ export default function Metric({kpi, showRating = false}) {
               <Area {...avgCostToAcquireCustomer.opts} />
             </AreaChart>
           </ResponsiveContainer>
-          {showRating && <RatingFeedback />}
+          {showRating && <RatingFeedback kpi={kpi} addRating={addRating} />}
         </div>
       )
 
@@ -145,7 +147,7 @@ export default function Metric({kpi, showRating = false}) {
               />
             </BarChart>
           </ResponsiveContainer>
-          {showRating && <RatingFeedback />}
+          {showRating && <RatingFeedback kpi={kpi} addRating={addRating} />}
         </div>
       )
 
@@ -175,7 +177,7 @@ export default function Metric({kpi, showRating = false}) {
               <Area {...avgCostToAcquireCustomer.opts} name="Churn Rate" />
             </AreaChart>
           </ResponsiveContainer>
-          {showRating && <RatingFeedback />}
+          {showRating && <RatingFeedback kpi={kpi} addRating={addRating} />}
         </div>
       )
 
@@ -200,7 +202,7 @@ export default function Metric({kpi, showRating = false}) {
               </span>
             </div>
           </div>
-          {showRating && <RatingFeedback />}
+          {showRating && <RatingFeedback kpi={kpi} addRating={addRating} />}
         </div>
       )
 
@@ -225,7 +227,7 @@ export default function Metric({kpi, showRating = false}) {
               </span>
             </div>
           </div>
-          {showRating && <RatingFeedback />}
+          {showRating && <RatingFeedback kpi={kpi} addRating={addRating} />}
         </div>
       )
 
@@ -250,7 +252,7 @@ export default function Metric({kpi, showRating = false}) {
               </span>
             </div>
           </div>
-          {showRating && <RatingFeedback />}
+          {showRating && <RatingFeedback kpi={kpi} addRating={addRating} />}
         </div>
       )
 
@@ -283,7 +285,7 @@ export default function Metric({kpi, showRating = false}) {
               />
             </AreaChart>
           </ResponsiveContainer>
-          {showRating && <RatingFeedback />}
+          {showRating && <RatingFeedback kpi={kpi} addRating={addRating} />}
         </div>
       )
 
@@ -308,7 +310,7 @@ export default function Metric({kpi, showRating = false}) {
               </Funnel>
             </FunnelChart>
           </ResponsiveContainer>
-          {showRating && <RatingFeedback />}
+          {showRating && <RatingFeedback kpi={kpi} addRating={addRating} />}
         </div>
       )
 
@@ -340,7 +342,7 @@ export default function Metric({kpi, showRating = false}) {
               />
             </BarChart>
           </ResponsiveContainer>
-          {showRating && <RatingFeedback />}
+          {showRating && <RatingFeedback kpi={kpi} addRating={addRating} />}
         </div>
       )
 
@@ -361,7 +363,7 @@ export default function Metric({kpi, showRating = false}) {
               </span>
             </div>
           </div>
-          {showRating && <RatingFeedback />}
+          {showRating && <RatingFeedback kpi={kpi} addRating={addRating} />}
         </div>
       )
 
@@ -386,7 +388,7 @@ export default function Metric({kpi, showRating = false}) {
               </span>
             </div>
           </div>
-          {showRating && <RatingFeedback />}
+          {showRating && <RatingFeedback kpi={kpi} addRating={addRating} />}
         </div>
       )
 
