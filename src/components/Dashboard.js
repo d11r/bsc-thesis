@@ -41,6 +41,17 @@ export default function Dashboard() {
     window.location.reload()
   }
 
+  const [shownMetrics, setShownMetrics] = useLocalStorage(
+    'displayed-metrics',
+    allMetrics.slice(0, 5),
+  )
+  const newMetric = () => {
+    //TODO: make recommender algorithm
+    //TODO: change
+    const rnd = Math.floor(Math.random() * 6)
+    setShownMetrics(allMetrics.slice(rnd, rnd + 5))
+  }
+
   console.log(ratings)
   return (
     <div className="h-screen w-screen bg-green-50">
@@ -58,18 +69,24 @@ export default function Dashboard() {
             </p>
           </div>
 
-          <div className="px-12 py-4">
+          <div className="flex flex-col px-12 py-4">
             <button
-              className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+              className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mb-2"
               onClick={toggleShowRatings}
             >
               {showRatings ? 'Hide Ratings' : 'Show Ratings'}
+            </button>
+            <button
+              className="bg-purple-500 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded"
+              onClick={newMetric}
+            >
+              New Metric
             </button>
           </div>
         </div>
 
         <div className="h-full w-full px-10 grid grid-cols-2 sm:grid-cols-3 xl:grid-cols-4 gap-1">
-          {allMetrics.slice(0, 5).map((metric, idx) => (
+          {shownMetrics.map((metric, idx) => (
             <Card key={metric} className={`m-2 ${idx === 0 && 'col-span-2'}`}>
               <Metric
                 kpi={metric}
