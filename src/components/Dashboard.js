@@ -35,26 +35,47 @@ export default function Dashboard() {
   const [ratings, setRatings] = useLocalStorage('bsc-ratings', [])
   const addRating = (r) => setRatings(ratings.concat(r))
 
+  const [showRatings, setShowRatings] = useLocalStorage('show-ratings', false)
+  const toggleShowRatings = () => {
+    setShowRatings(!showRatings)
+    window.location.reload()
+  }
+
   console.log(ratings)
   return (
     <div className="h-screen w-screen bg-green-50">
       <div>
-        <div className="px-12 py-2">
-          <h3 className="text-2xl text-gray-800">
-            Adaptable Performance Dashboard Demo
-          </h3>
+        <div className="flex justify-between">
+          <div className="px-12 py-2">
+            <h3 className="text-2xl text-gray-800">
+              Adaptable Performance Dashboard Demo
+            </h3>
 
-          <p className="text-sm text-gray-600">BSc Thesis</p>
-          <p className="text-sm text-gray-600">Student: Dragos Strugar</p>
-          <p className="text-sm text-gray-600">
-            Supervisor: Prof. Giancarlo Succi
-          </p>
+            <p className="text-sm text-gray-600">BSc Thesis</p>
+            <p className="text-sm text-gray-600">Student: Dragos Strugar</p>
+            <p className="text-sm text-gray-600">
+              Supervisor: Prof. Giancarlo Succi
+            </p>
+          </div>
+
+          <div className="px-12 py-4">
+            <button
+              className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+              onClick={toggleShowRatings}
+            >
+              {showRatings ? 'Hide Ratings' : 'Show Ratings'}
+            </button>
+          </div>
         </div>
 
         <div className="h-full w-full px-10 grid grid-cols-2 sm:grid-cols-3 xl:grid-cols-4 gap-1">
           {allMetrics.slice(0, 5).map((metric, idx) => (
             <Card key={metric} className={`m-2 ${idx === 0 && 'col-span-2'}`}>
-              <Metric kpi={metric} showRating={true} addRating={addRating} />
+              <Metric
+                kpi={metric}
+                showRating={showRatings}
+                addRating={addRating}
+              />
             </Card>
           ))}
         </div>
