@@ -1,7 +1,7 @@
-import MetricsView from './components/MetricsView'
+import Dashboard from './components/Dashboard'
 
 function App() {
-  return <MetricsView />
+  return <Dashboard />
 }
 
 export default App

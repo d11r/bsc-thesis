@@ -3,7 +3,7 @@ import Card from './Card'
 
 import {metrics} from '../constants'
 
-export default function MetricsView() {
+export default function Dashboard() {
   const allMetrics = [
     metrics.newAccountsPerMonth,
     metrics.avgCostToAcquireCustomer,
