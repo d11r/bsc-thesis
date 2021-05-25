@@ -37,7 +37,7 @@ export default function MetricsView() {
         <div className="h-full w-full px-10 grid grid-cols-2 sm:grid-cols-3 xl:grid-cols-4 gap-2">
           {allMetrics.slice(0, 5).map((metric, idx) => (
             <Card className={`m-2 ${idx === 0 && 'col-span-2'}`}>
-              <Metric kpi={metric}></Metric>
+              <Metric kpi={metric} showRating={true} />
             </Card>
           ))}
         </div>
