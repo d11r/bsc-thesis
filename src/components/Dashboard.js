@@ -46,7 +46,11 @@ export default function Dashboard() {
     allMetrics.slice(0, 5),
   )
   const newMetric = () => {
-    //TODO: make recommender algorithm
+    // step1: find metric with lowest overall score
+    // step2: replace metric with lowest score
+    // step3: recommender system to find most relevant metric
+    // step4: insert that new metric
+
     //TODO: change
     const rnd = Math.floor(Math.random() * 6)
     setShownMetrics(allMetrics.slice(rnd, rnd + 5))
