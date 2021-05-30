@@ -3,6 +3,20 @@ import Metric from './Metric'
 import Card from './Card'
 
 import {metrics} from '../constants'
+import {findBestCos} from '../recommender/cf'
+
+function getArrayFromRatings(r) {
+  let result = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+  const allMs = Object.values(metrics)
+  for (let x = 0; x < allMs.length; x++) {
+    for (let p = 0; p < r.length; p++) {
+      if (Object.keys(r[p])[0] === allMs[x]) {
+        result[x] = Object.values(r[p])[0]
+      }
+    }
+  }
+  return result
+}
 
 function useLocalStorage(key, defaultValue = []) {
   const [state, setState] = React.useState(
@@ -35,28 +49,34 @@ export default function Dashboard() {
   const [ratings, setRatings] = useLocalStorage('bsc-ratings', [])
   const addRating = (r) => setRatings(ratings.concat(r))
 
-  const [showRatings, setShowRatings] = useLocalStorage('show-ratings', false)
-  const toggleShowRatings = () => {
-    setShowRatings(!showRatings)
-    window.location.reload()
-  }
-
   const [shownMetrics, setShownMetrics] = useLocalStorage(
     'displayed-metrics',
     allMetrics.slice(0, 5),
   )
   const newMetric = () => {
-    // step1: find metric with lowest overall score
-    // step2: replace metric with lowest score
-    // step3: recommender system to find most relevant metric
-    // step4: insert that new metric
+    const alreadyShownIdxs = shownMetrics.map((sm) => allMetrics.indexOf(sm))
+    const myRatings = getArrayFromRatings(ratings)
 
-    //TODO: change
-    const rnd = Math.floor(Math.random() * 6)
-    setShownMetrics(allMetrics.slice(rnd, rnd + 5))
+    let minimal = 100
+    let minimalIdx = 4
+    for (let i = 0; i < myRatings.length; i++) {
+      if (
+        myRatings[i] > 0 &&
+        myRatings[i] < minimal &&
+        alreadyShownIdxs.includes(i)
+      ) {
+        minimal = myRatings[i]
+        minimalIdx = i
+      }
+    }
+    const withoutMinimal = shownMetrics.filter(
+      (x) => x !== allMetrics[minimalIdx],
+    )
+
+    const [prediction, newMetricIdx] = findBestCos(myRatings, alreadyShownIdxs)
+    setShownMetrics(withoutMinimal.concat([allMetrics[newMetricIdx]]))
   }
 
-  console.log(ratings)
   return (
     <div className="h-screen w-screen bg-green-50">
       <div>
@@ -75,12 +95,6 @@ export default function Dashboard() {
 
           <div className="flex flex-col px-12 py-4">
             <button
-              className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mb-2"
-              onClick={toggleShowRatings}
-            >
-              {showRatings ? 'Hide Ratings' : 'Show Ratings'}
-            </button>
-            <button
               className="bg-purple-500 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded"
               onClick={newMetric}
             >
@@ -94,7 +108,9 @@ export default function Dashboard() {
             <Card key={metric} className={`m-2 ${idx === 0 && 'col-span-2'}`}>
               <Metric
                 kpi={metric}
-                showRating={showRatings}
+                showRating={
+                  ratings.find((x) => Object.keys(x)[0] === metric) == null
+                }
                 addRating={addRating}
               />
             </Card>

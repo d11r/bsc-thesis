@@ -42,11 +42,11 @@ function RatingFeedback({addRating, kpi}) {
     <div className="w-full px-6 flex justify-around items-center">
       {justRated ? (
         <div
-          class="flex items-center bg-green-400 text-white text-sm font-bold px-4 py-1 rounded"
+          className="flex items-center bg-green-400 text-white text-sm font-bold px-4 py-1 rounded"
           role="alert"
         >
           <svg
-            class="fill-current w-4 h-4 mr-2"
+            className="fill-current w-4 h-4 mr-2"
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 20 20"
           >
@@ -64,9 +64,6 @@ function RatingFeedback({addRating, kpi}) {
             onChange={(newRating) => {
               addRating({[kpi]: newRating})
               setJustRated(true)
-              setTimeout(() => {
-                setJustRated(false)
-              }, 3000)
             }}
           />
         </>
