@@ -35,7 +35,7 @@ function getBoth(i, j) {
   return both
 }
 
-function cosineSimilarity(i, j) {
+export function cosineSimilarity(i, j) {
   const product = dot(getItem(i), getItem(j))
   const iNorm = norm(getItem(i))
   const jNorm = norm(getItem(j))
@@ -44,7 +44,7 @@ function cosineSimilarity(i, j) {
   return Number.isNaN(result) ? 0 : result
 }
 
-function correlationSimilarity(i, j) {
+export function correlationSimilarity(i, j) {
   // isolate cases where user rated both i and j
   const both = getBoth(getItem(i), getItem(j))
 
@@ -101,16 +101,8 @@ function predict(ratings, sim) {
   return predictedRatings
 }
 
-function predictCosine(ratings) {
-  return predict(ratings, cosineSimilarity)
-}
-
-function predictCorrelation(ratings) {
-  return predict(ratings, correlationSimilarity)
-}
-
-export function findBestCos(ratings, indexBlacklist) {
-  const pred = predictCosine(ratings, cosineSimilarity)
+export function findBest(ratings, indexBlacklist, sim) {
+  const pred = predict(ratings, sim)
 
   let maximal = -1
   let maximalIdx = -1

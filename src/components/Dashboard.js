@@ -3,7 +3,11 @@ import Metric from './Metric'
 import Card from './Card'
 
 import {metrics} from '../constants'
-import {findBestCos} from '../recommender/cf'
+import {
+  cosineSimilarity,
+  correlationSimilarity,
+  findBest,
+} from '../recommender/cf'
 
 function getArrayFromRatings(r) {
   let result = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
@@ -53,7 +57,7 @@ export default function Dashboard() {
     'displayed-metrics',
     allMetrics.slice(0, 5),
   )
-  const newMetric = () => {
+  const newMetric = (sim) => () => {
     const alreadyShownIdxs = shownMetrics.map((sm) => allMetrics.indexOf(sm))
     const myRatings = getArrayFromRatings(ratings)
 
@@ -73,8 +77,18 @@ export default function Dashboard() {
       (x) => x !== allMetrics[minimalIdx],
     )
 
-    const [prediction, newMetricIdx] = findBestCos(myRatings, alreadyShownIdxs)
+    const [prediction, newMetricIdx] = findBest(
+      myRatings,
+      alreadyShownIdxs,
+      sim,
+    )
     setShownMetrics(withoutMinimal.concat([allMetrics[newMetricIdx]]))
+  }
+
+  const resetSuggestions = () => {
+    setShownMetrics(allMetrics.slice(0, 5))
+    setRatings([])
+    window.location.reload()
   }
 
   return (
@@ -94,11 +108,25 @@ export default function Dashboard() {
           </div>
 
           <div className="flex flex-col px-12 py-4">
+            <div className="flex">
+              <button
+                className="bg-purple-500 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded mb-2 mr-2"
+                onClick={newMetric(cosineSimilarity)}
+              >
+                New Metric (Cosine)
+              </button>
+              <button
+                className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mb-2 ml-2"
+                onClick={newMetric(correlationSimilarity)}
+              >
+                New Metric (Corr)
+              </button>
+            </div>
             <button
-              className="bg-purple-500 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded"
-              onClick={newMetric}
+              className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
+              onClick={resetSuggestions}
             >
-              New Metric
+              Reset Suggestions
             </button>
           </div>
         </div>
