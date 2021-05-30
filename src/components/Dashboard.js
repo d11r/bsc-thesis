@@ -77,11 +77,8 @@ export default function Dashboard() {
       (x) => x !== allMetrics[minimalIdx],
     )
 
-    const [prediction, newMetricIdx] = findBest(
-      myRatings,
-      alreadyShownIdxs,
-      sim,
-    )
+    // eslint-disable-next-line no-unused-vars
+    const [_, newMetricIdx] = findBest(myRatings, alreadyShownIdxs, sim)
     setShownMetrics(withoutMinimal.concat([allMetrics[newMetricIdx]]))
   }
 
